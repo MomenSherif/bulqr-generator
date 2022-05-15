@@ -1,8 +1,12 @@
+import { Flex, Heading } from '@chakra-ui/react';
+
 function App() {
   return (
-    <div style={{ textAlign: 'center', fontFamily: 'Arial' }}>
-      <h1>create-react-linters 🚀</h1>
-    </div>
+    <Flex minH="100vh" justify="center" align="center">
+      <Heading as="h1" size="4xl" fontWeight="500">
+        Chakra UI 🚀
+      </Heading>
+    </Flex>
   );
 }
 
