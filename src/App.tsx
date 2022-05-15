@@ -1,12 +1,19 @@
-import { Flex, Heading } from '@chakra-ui/react';
+import { useState } from 'react';
+import { Box, Container, useColorModeValue } from '@chakra-ui/react';
+import Header from './components/Header';
+import QRInput from './components/QRInput';
 
 function App() {
+  const bg = useColorModeValue('gray.50', 'gray.900');
+  const [input, setInput] = useState('');
+
   return (
-    <Flex minH="100vh" justify="center" align="center">
-      <Heading as="h1" size="4xl" fontWeight="500">
-        Chakra UI 🚀
-      </Heading>
-    </Flex>
+    <Box minH="100vh" bg={bg}>
+      <Header />
+      <Container maxW="container.xl" pt="10">
+        <QRInput value={input} onChange={setInput} />
+      </Container>
+    </Box>
   );
 }
 

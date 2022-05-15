@@ -24,6 +24,8 @@
   "rules": {
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/no-shadow": "off",
+    "react/jsx-props-no-spreading": "off",
+    "import/prefer-default-export": "off",
     "prettier/prettier": "error"
   },
   "overrides": [
