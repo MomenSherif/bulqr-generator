@@ -1,14 +1,17 @@
 import { useMemo, useState } from 'react';
 import { Button } from '@chakra-ui/react';
+import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
 
 import QRInput from './QRInput';
-import { getQRCodeImages } from '../utils';
+
+const createQRWorker = createWorkerFactory(() => import('../utils/qr.worker'));
 
 type QRFormProps = {
   onSubmit: (qrCodeImages: string[]) => void;
 };
 
 export default function QRForm({ onSubmit }: QRFormProps) {
+  const qrWokrer = useWorker(createQRWorker);
   const [input, setInput] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -21,7 +24,7 @@ export default function QRForm({ onSubmit }: QRFormProps) {
     if (!input) return;
 
     setIsSubmitting(true);
-    const qrCodeImages = await getQRCodeImages(values);
+    const qrCodeImages = await qrWokrer.generateImages(values);
     onSubmit(qrCodeImages);
     setIsSubmitting(false);
   };
