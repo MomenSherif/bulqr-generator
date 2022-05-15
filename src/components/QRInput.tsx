@@ -21,7 +21,7 @@ export default function QRInput({ value, onChange, ...props }: QRInputProps) {
         resize="vertical"
         variant="outline"
         size="lg"
-        rows={7}
+        rows={10}
         value={value}
         onChange={e => onChange(e.target.value)}
       />
