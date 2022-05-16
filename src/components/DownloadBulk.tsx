@@ -4,7 +4,7 @@ import { downloadZip } from 'client-zip';
 
 import { ZippedUrlAndQR } from '../types';
 import ZipFolderIcon from './Icons/ZipFolder.icon';
-import dataURLtoFile from '../utils/dataUrlToFile';
+import dataURLtoFile from '../utils/dataURLtoFile';
 import downloadFile from '../utils/downloadFile';
 import generateRandomString from '../utils/generateRandomString';
 
