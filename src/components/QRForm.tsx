@@ -4,6 +4,7 @@ import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
 
 import QRInput from './QRInput';
 import { ZippedUrlAndQR } from '../types';
+import { MAX_CODES } from '../config';
 
 const createQRWorker = createWorkerFactory(() => import('../utils/qr.worker'));
 
@@ -19,6 +20,7 @@ export default function QRForm({ onSubmit }: QRFormProps) {
   const values = useMemo(() => input.split('\n').filter(Boolean), [input]);
 
   const numberOfQRCodes = values.length;
+  const isInvalid = numberOfQRCodes > MAX_CODES;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -35,10 +37,10 @@ export default function QRForm({ onSubmit }: QRFormProps) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <QRInput value={input} onChange={setInput} />
+      <QRInput value={input} onChange={setInput} isInvalid={isInvalid} />
       <Button
         type="submit"
-        disabled={!input}
+        disabled={!input || isInvalid}
         size="lg"
         display="flex"
         mt="5"
