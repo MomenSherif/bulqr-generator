@@ -1,6 +1,9 @@
 export type FormValues = {
-  correctionLevel: 'L' | 'M' | 'Q' | 'H';
+  errorCorrectionLevel: 'L' | 'M' | 'Q' | 'H';
+  width: number;
   margin: number;
-  backgroundColor: string;
-  foregroundColor: string;
+  color: {
+    light: string; // backgroundColor
+    dark: string; // foregroundColor
+  };
 };

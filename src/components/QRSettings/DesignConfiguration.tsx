@@ -23,11 +23,11 @@ export default function DesignConfiguration() {
         <VStack align="start" spacing={5}>
           <Box>
             <FormLabel>Background Color</FormLabel>
-            <ColorPicker name="backgroundColor" />
+            <ColorPicker name="color.light" />
           </Box>
           <Box>
             <FormLabel>Foreground Color</FormLabel>
-            <ColorPicker name="foregroundColor" />
+            <ColorPicker name="color.dark" />
           </Box>
         </VStack>
       </AccordionPanel>

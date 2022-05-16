@@ -16,24 +16,22 @@ import {
 import { FormProvider, useForm } from 'react-hook-form';
 
 import CodeConfiguration from './CodeConfiguration';
-import { FormValues } from './types';
 import DesignConfiguration from './DesignConfiguration';
+import { FormValues } from './types';
+import { useSettings } from '../../context/Settings.context';
 
 export default function QRSettings() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { settings, updateSettings } = useSettings();
+
   const methods = useForm<FormValues>({
-    defaultValues: {
-      correctionLevel: 'M',
-      margin: 4,
-      backgroundColor: '#FFFFFF',
-      foregroundColor: '#000000',
-    },
+    defaultValues: settings,
   });
   const btnRef = useRef<HTMLButtonElement>(null);
 
   const onSubmit = (data: FormValues) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
+    updateSettings(data);
+    onClose();
   };
 
   return (

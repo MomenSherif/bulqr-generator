@@ -33,7 +33,7 @@ export default function CodeConfiguration() {
         <VStack spacing={5}>
           <FormControl>
             <FormLabel>Error correction level</FormLabel>
-            <Select {...register('correctionLevel')}>
+            <Select {...register('errorCorrectionLevel')}>
               <option value="L">Low</option>
               <option value="M">Medium</option>
               <option value="Q">Quartile</option>
@@ -45,12 +45,31 @@ export default function CodeConfiguration() {
           </FormControl>
 
           <FormControl>
+            <FormLabel>Width</FormLabel>
+            {/* @ts-ignore */}
+            <NumberInput
+              {...register('width', { valueAsNumber: true })}
+              min={115}
+              max={1000}
+              allowMouseWheel={false}
+            >
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+            <FormHelperText>QR witdh in px.</FormHelperText>
+          </FormControl>
+
+          <FormControl>
             <FormLabel>Margin</FormLabel>
             {/* @ts-ignore */}
             <NumberInput
               {...register('margin', { valueAsNumber: true })}
               min={0}
               max={15}
+              allowMouseWheel={false}
             >
               <NumberInputField />
               <NumberInputStepper>

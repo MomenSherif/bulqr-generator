@@ -5,6 +5,7 @@ import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
 import QRInput from './QRInput';
 import { ZippedUrlAndQR } from '../types';
 import { MAX_CODES } from '../config';
+import { useSettings } from '../context/Settings.context';
 
 const createQRWorker = createWorkerFactory(() => import('../utils/qr.worker'));
 
@@ -16,6 +17,7 @@ export default function QRForm({ onSubmit }: QRFormProps) {
   const qrWokrer = useWorker(createQRWorker);
   const [input, setInput] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { settings } = useSettings();
 
   const values = useMemo(() => input.split('\n').filter(Boolean), [input]);
 
@@ -27,7 +29,8 @@ export default function QRForm({ onSubmit }: QRFormProps) {
     if (!input) return;
 
     setIsSubmitting(true);
-    const qrCodeImages = await qrWokrer.generateImages(values);
+
+    const qrCodeImages = await qrWokrer.generateImages(values, settings);
 
     const zippedUrlandQR = values.map((url, idx) => [url, qrCodeImages[idx]]);
 
