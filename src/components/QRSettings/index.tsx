@@ -12,6 +12,7 @@ import {
   Accordion,
   Box,
   Divider,
+  IconButton,
 } from '@chakra-ui/react';
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -19,6 +20,7 @@ import CodeConfiguration from './CodeConfiguration';
 import DesignConfiguration from './DesignConfiguration';
 import { FormValues } from './types';
 import { useSettings } from '../../context/Settings.context';
+import SettingsIcon from '../Icons/Settings.icon';
 
 export default function QRSettings() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -36,9 +38,14 @@ export default function QRSettings() {
 
   return (
     <>
-      <Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
-        Open
-      </Button>
+      <IconButton
+        ref={btnRef}
+        aria-label="QR settings"
+        onClick={onOpen}
+        fontSize="xl"
+      >
+        <SettingsIcon />
+      </IconButton>
       <Drawer
         isOpen={isOpen}
         placement="left"
