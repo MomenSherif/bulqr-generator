@@ -1,5 +1,5 @@
 import { Box, Flex, Image, useColorModeValue } from '@chakra-ui/react';
-import { DownloadImgIcon } from './Icons';
+import { DownloadIcon } from './Icons';
 
 type QRCardProps = {
   url: string;
@@ -37,7 +37,7 @@ export default function QRCard({ url, qr }: QRCardProps) {
         _groupFocus={{ opacity: 1, pointerEvents: 'auto' }}
         transition="opacity 0.2s ease-in-out"
       >
-        <DownloadImgIcon fontSize="7xl" />
+        <DownloadIcon fontSize="7xl" />
       </Flex>
     </Box>
   );
