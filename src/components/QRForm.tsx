@@ -3,11 +3,12 @@ import { Button } from '@chakra-ui/react';
 import { createWorkerFactory, useWorker } from '@shopify/react-web-worker';
 
 import QRInput from './QRInput';
+import { ZippedUrlAndQR } from '../types';
 
 const createQRWorker = createWorkerFactory(() => import('../utils/qr.worker'));
 
 type QRFormProps = {
-  onSubmit: (qrCodeImages: string[]) => void;
+  onSubmit: (zippedValues: ZippedUrlAndQR) => void;
 };
 
 export default function QRForm({ onSubmit }: QRFormProps) {
@@ -25,7 +26,10 @@ export default function QRForm({ onSubmit }: QRFormProps) {
 
     setIsSubmitting(true);
     const qrCodeImages = await qrWokrer.generateImages(values);
-    onSubmit(qrCodeImages);
+
+    const zippedUrlandQR = values.map((url, idx) => [url, qrCodeImages[idx]]);
+
+    onSubmit(zippedUrlandQR);
     setIsSubmitting(false);
   };
 
