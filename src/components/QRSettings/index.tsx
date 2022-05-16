@@ -10,11 +10,14 @@ import {
   DrawerOverlay,
   useDisclosure,
   Accordion,
+  Box,
+  Divider,
 } from '@chakra-ui/react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import CodeConfiguration from './CodeConfiguration';
 import { FormValues } from './types';
+import DesignConfiguration from './DesignConfiguration';
 
 export default function QRSettings() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -22,6 +25,8 @@ export default function QRSettings() {
     defaultValues: {
       correctionLevel: 'M',
       margin: 4,
+      backgroundColor: '#FFFFFF',
+      foregroundColor: '#000000',
     },
   });
   const btnRef = useRef<HTMLButtonElement>(null);
@@ -52,7 +57,10 @@ export default function QRSettings() {
               <form id="settings" onSubmit={methods.handleSubmit(onSubmit)}>
                 <Accordion allowToggle allowMultiple>
                   <CodeConfiguration />
+                  <Divider width="calc(100% - 32px)" mx="auto" my="4" />
+                  <DesignConfiguration />
                 </Accordion>
+                <Box px="5" />
               </form>
             </FormProvider>
           </DrawerBody>
