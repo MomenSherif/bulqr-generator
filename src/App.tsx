@@ -11,7 +11,7 @@ function App() {
   const [zippedCodes, setZippedCodes] = useState<ZippedUrlAndQR>([]);
 
   return (
-    <Box minH="100vh" bg={bg}>
+    <Box minH="full" bg={bg}>
       <Header />
 
       <Container maxW="container.xl" pt="10">

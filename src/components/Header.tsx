@@ -1,5 +1,7 @@
 import { Flex, Heading, IconButton, useColorMode } from '@chakra-ui/react';
+
 import { MoonIcon, QRIcon, SunIcon } from './Icons';
+import QRSettings from './QRSettings';
 
 export default function Header() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -8,7 +10,7 @@ export default function Header() {
 
   return (
     <Flex as="header" justify="space-between" align="center" shadow="md" p="5">
-      <span aria-hidden="true" />
+      <QRSettings />
       <Heading fontSize="4xl">
         BulQR Generator <QRIcon ml="2" fontSize="larger" />
       </Heading>

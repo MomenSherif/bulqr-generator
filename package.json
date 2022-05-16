@@ -22,7 +22,8 @@
     "framer-motion": "^6",
     "qrcode": "^1.5.0",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-hook-form": "^7.31.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
