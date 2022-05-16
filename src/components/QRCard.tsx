@@ -1,5 +1,5 @@
 import { Box, Flex, Image, useColorModeValue } from '@chakra-ui/react';
-import DownloadImgIcon from './Icons/downloadImg.icon';
+import { DownloadImgIcon } from './Icons';
 
 type QRCardProps = {
   url: string;

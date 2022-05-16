@@ -20,7 +20,7 @@ import CodeConfiguration from './CodeConfiguration';
 import DesignConfiguration from './DesignConfiguration';
 import { FormValues } from './types';
 import { useSettings } from '../../context/Settings.context';
-import SettingsIcon from '../Icons/Settings.icon';
+import { SettingsIcon } from '../Icons';
 
 export default function QRSettings() {
   const { isOpen, onOpen, onClose } = useDisclosure();

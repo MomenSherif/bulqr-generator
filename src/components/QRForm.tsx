@@ -6,6 +6,7 @@ import QRInput from './QRInput';
 import { ZippedUrlAndQR } from '../types';
 import { MAX_CODES } from '../config';
 import { useSettings } from '../context/Settings.context';
+import pluralize from '../utils/pluralize';
 
 const createQRWorker = createWorkerFactory(() => import('../utils/qr.worker'));
 
@@ -52,7 +53,8 @@ export default function QRForm({ onSubmit }: QRFormProps) {
         maxW="full"
         isLoading={isSubmitting}
       >
-        Generate {numberOfQRCodes} QR Code {numberOfQRCodes ? '🚀' : '😢'}
+        Generate {numberOfQRCodes} QR {pluralize('code', numberOfQRCodes)}{' '}
+        {numberOfQRCodes ? '🚀' : '😢'}
       </Button>
     </form>
   );
