@@ -11,7 +11,7 @@ export default function Header() {
   return (
     <Flex as="header" justify="space-between" align="center" shadow="md" p="5">
       <QRSettings />
-      <Heading fontSize="4xl">
+      <Heading fontSize={['xl', '2xl', '4xl']}>
         BulQR Generator <QRIcon ml="2" fontSize="larger" />
       </Heading>
       <IconButton
