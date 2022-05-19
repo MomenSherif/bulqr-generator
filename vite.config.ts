@@ -2,12 +2,20 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
+import { visualizer } from 'rollup-plugin-visualizer';
+
+const analyzeMode = process.env.ANALYZE === 'true';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
+    visualizer({
+      sourcemap: analyzeMode,
+      template: 'sunburst',
+    }),
     VitePWA({
+      disable: true,
       manifest: {
         name: 'BulQR',
         short_name: 'BulQR',
@@ -44,5 +52,6 @@ export default defineConfig({
   ],
   build: {
     target: ['es2020'],
+    sourcemap: analyzeMode,
   },
 });

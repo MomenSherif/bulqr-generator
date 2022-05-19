@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Rollup visualizer
+stats.html
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
